@@ -1,12 +1,13 @@
 package main;
 
-import three.ThreeNPlus1;
 import fileops.*;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigInteger;
+
+import collatz.Collatz;
 
 public class Main {
 
@@ -31,8 +32,8 @@ public class Main {
 		for (;;) {
 			temp = n;
 			steps = 0;
-			while (!n.equals(ThreeNPlus1.one)) {
-				n = ThreeNPlus1.calc3n(n);
+			while (!n.equals(Collatz.one)) {
+				n = Collatz.calc3nPlus1(n);
 				steps += 1;
 				// System.out.println("\t\t" + n);
 			}
@@ -61,7 +62,7 @@ public class Main {
 				FileOps.writeLatestChunk(temp);
 				lastLogged = temp;
 			}
-			n = temp.add(ThreeNPlus1.one);
+			n = temp.add(Collatz.one);
 //			System.out.println("Latest: " + temp);
 		}
 		
